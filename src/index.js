@@ -1,4 +1,5 @@
 var DaoHandler = require("./DaoHandler");
+var UserDAO = require("./UserDAO");
 
 var HelloWorldDB = function() {};
 
@@ -10,6 +11,12 @@ HelloWorldDB.prototype.sayHello = function(name) {
     return "Hello, " + name + "!";
 };
 
-exports.default = HelloWorldDB;
+var foobar = function() {};
+
+foobar.HelloWorldDB = HelloWorldDB;
+foobar.UserDAO = UserDAO;
+foobar.DaoHandler = DaoHandler;
+
+exports.default = foobar;
 module.exports = exports.default;
 
