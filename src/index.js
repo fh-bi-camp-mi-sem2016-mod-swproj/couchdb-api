@@ -1,3 +1,5 @@
+import DaoHandler from "./DaoHandler";
+
 var HelloWorldDB = function() {};
 
 HelloWorldDB.prototype.sayHelloWorld = function() {
