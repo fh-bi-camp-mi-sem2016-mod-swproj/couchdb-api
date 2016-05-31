@@ -1,4 +1,4 @@
-import DaoHandler from "./DaoHandler";
+var DaoHandler = require("./DaoHandler");
 
 var HelloWorldDB = function() {};
 

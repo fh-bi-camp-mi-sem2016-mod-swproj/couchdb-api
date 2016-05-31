@@ -1,4 +1,4 @@
-import UserDAO from "./UserDAO";
+var UserDAO = require("./UserDAO");
 
 var DaoHandler = function() {};
 
