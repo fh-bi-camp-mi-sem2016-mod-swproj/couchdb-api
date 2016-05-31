@@ -1,0 +1,27 @@
+{
+  "name": "findme-react-couchdb-api",
+  "version": "0.0.1",
+  "description": "CouchDB based API for find.me.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/findme-react/couchdb-api.git"
+  },
+  "keywords": [
+    "find.me",
+    "findme",
+    "couchdb",
+    "api",
+    "react"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/findme-react/couchdb-api/issues"
+  },
+  "homepage": "https://github.com/findme-react/couchdb-api#readme"
+}
