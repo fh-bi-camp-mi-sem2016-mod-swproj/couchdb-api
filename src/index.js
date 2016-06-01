@@ -1,11 +1,11 @@
 var DaoHandler = require("./DaoHandler");
 var UserDAO = require("./UserDAO");
 
-var foobar = function() {};
+var CouchDbApi = function() {};
 
-foobar.UserDAO = UserDAO;
-foobar.DaoHandler = DaoHandler;
+CouchDbApi.UserDAO = UserDAO;
+CouchDbApi.DaoHandler = DaoHandler;
 
-exports.default = foobar;
+exports.default = CouchDbApi;
 module.exports = exports.default;
 
