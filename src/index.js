@@ -1,10 +1,10 @@
-var DaoHandler = require("./DaoHandler");
+var DaoManager = require("./DaoManager");
 var UserDAO = require("./UserDAO");
 
 var CouchDbApi = function() {};
 
 CouchDbApi.UserDAO = UserDAO;
-CouchDbApi.DaoHandler = DaoHandler;
+CouchDbApi.DaoManager = DaoManager;
 
 exports.default = CouchDbApi;
 module.exports = exports.default;

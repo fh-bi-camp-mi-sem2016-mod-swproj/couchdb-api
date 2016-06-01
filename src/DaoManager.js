@@ -1,8 +1,8 @@
 var UserDAO = require("./UserDAO");
 
-var DaoHandler = function() {};
+var DaoManager = function() {};
 
-DaoHandler.prototype.getUserDao = function() {
+DaoManager.prototype.getUserDao = function() {
     if (!this.userDao) {
         this.userDao = new UserDAO();
     }
@@ -10,5 +10,5 @@ DaoHandler.prototype.getUserDao = function() {
     return this.userDao;
 };
 
-exports.default = DaoHandler;
+exports.default = DaoManager;
 module.exports = exports.default;
