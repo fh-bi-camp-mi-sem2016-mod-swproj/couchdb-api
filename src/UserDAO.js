@@ -62,7 +62,7 @@ UserDAO.prototype.createOrUpdate = function(obj) {
     if (obj._id) {
         result = this.update(obj);
     } else {
-        result = this.save(obj);
+        result = this.create(obj);
     }
 
     return result;
