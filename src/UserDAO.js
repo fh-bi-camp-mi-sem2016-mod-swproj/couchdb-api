@@ -90,9 +90,9 @@ UserDAO.prototype.update = function(obj, callbacks) {
 
 UserDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
-        result = this.update(obj, callbacks);
+        this.update(obj, callbacks);
     } else {
-        result = this.create(obj, callbacks);
+        this.create(obj, callbacks);
     }
 };
 
