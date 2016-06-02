@@ -1,5 +1,28 @@
 var DaoManager = function(connectionProperties) {
-    this._connectionProperties = connectionProperties;
+    if (connectionProperties) {
+        if (connectionProperties.protocol) {
+            this.connection.protocol = connectionProperties.protocol;
+        }
+        if (connectionProperties.user) {
+            this.connection.user = connectionProperties.user;
+        }
+        if (connectionProperties.password) {
+            this.connection.password = connectionProperties.password;
+        }
+        if (connectionProperties.url) {
+            this.connection.url = connectionProperties.url;
+        } else {
+            console.error("No URL given!")
+        }
+        if (connectionProperties.port) {
+            this.connection.port = connectionProperties.port;
+        }
+        if (connectionProperties.protocol) {
+            this.connection.protocol = connectionProperties.protocol;
+        } else {
+            console.error("No database given!");
+        }
+    }
 };
 
 DaoManager.prototype._daos = {};
