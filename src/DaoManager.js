@@ -1,8 +1,8 @@
 var DaoManager = function(connectionProperties) {
     this._connectionProperties = connectionProperties;
-};
 
-DaoManager.prototype._daos = {};
+    this._daos = {};
+};
 
 DaoManager.prototype.getDao = function(dao) {
     if (!this._daos[dao]) {
