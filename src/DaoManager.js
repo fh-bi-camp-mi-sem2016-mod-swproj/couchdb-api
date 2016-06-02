@@ -59,7 +59,7 @@ DaoManager.prototype.getDao = function(dao) {
 };
 
 DaoManager.prototype.createDao = function(dao) {
-    return new dao(this._connectionProperties);
+    return new dao(this.connection);
 };
 
 exports.default = DaoManager;
