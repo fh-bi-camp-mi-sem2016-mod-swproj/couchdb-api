@@ -6,10 +6,14 @@ var DaoManager = function(connectionProperties) {
 
 DaoManager.prototype.getDao = function(dao) {
     if (!this._daos[dao]) {
-        this._daos[dao] = new dao(this._connectionProperties);
+        this._daos[dao] = createDao(dao);
     }
 
     return this._daos[dao];
+};
+
+DaoManager.prototype.createDao = function(dao) {
+    return new dao(this._connectionProperties);
 };
 
 exports.default = DaoManager;
