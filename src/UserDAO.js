@@ -1,4 +1,6 @@
-var UserDAO = function() {};
+var UserDAO = function(connection) {
+    this.connection = connection;
+};
 
 UserDAO.prototype.findByLogin = function(login, callbacks) {
     $.ajax({
