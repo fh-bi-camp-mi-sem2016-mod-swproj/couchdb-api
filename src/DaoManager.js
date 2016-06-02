@@ -22,6 +22,8 @@ var DaoManager = function(connectionProperties) {
         } else {
             console.error("No database given!");
         }
+    } else {
+        console.error("No connection properties given!");
     }
 };
 
