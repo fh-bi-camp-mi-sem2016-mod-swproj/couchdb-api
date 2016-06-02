@@ -52,7 +52,7 @@ DaoManager.prototype.connection.getFullUrl = function() {
 
 DaoManager.prototype.getDao = function(dao) {
     if (!this._daos[dao]) {
-        this._daos[dao] = createDao(dao);
+        this._daos[dao] = this.createDao(dao);
     }
 
     return this._daos[dao];
