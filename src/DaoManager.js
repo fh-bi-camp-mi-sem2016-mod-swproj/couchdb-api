@@ -43,7 +43,7 @@ DaoManager.prototype.connection.getFullUrl = function() {
     result += this.connection.user ? this.connection.user : "";
     result += this.connection.user && this.connection.password ? ":" + this.connection.password : "";
     result += this.connection.user ? "@" : "";
-    result += url;
+    result += this.connection.url;
     result += this.connection.port ? ":" + this.connection.port : "";
     result += "/" + this.connection.database + "/";
 
