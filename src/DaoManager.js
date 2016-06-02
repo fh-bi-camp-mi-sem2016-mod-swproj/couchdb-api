@@ -4,7 +4,14 @@ var DaoManager = function(connectionProperties) {
 
 DaoManager.prototype._daos = {};
 
-DaoManager.prototype.connection = {};
+DaoManager.prototype.connection = {
+    protocol: "https",
+    user: "",
+    password: "",
+    url: "", // Mandatory
+    port: "",
+    database: "" // Mandatory
+};
 
 DaoManager.prototype.connection.getFullUrl = function() {
     var result = "";
