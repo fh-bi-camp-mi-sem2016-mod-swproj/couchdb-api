@@ -1,79 +1,117 @@
 var UserDAO = function() {};
 
-UserDAO.prototype.findUserByLogin = function(login) {
-    var result = {};
-
+UserDAO.prototype.findByLogin = function(login, callbacks) {
     $.ajax({
         url: "",
         type: "GET",
-        async: false
-    }).success(function(data) {
-        result = JSON.parse(data);
+        contentType: "application/json"
+    }).success(function(data, textStatus, jqXHR) {
+        if (callbacks && typeof callbacks.success === "function") {
+            callbacks.success(JSON.parse(data), textStatus, jqXHR);
+        }
+    }).error(function(jqXHR, textStatus, errorThrown) {
+        if (callbacks && typeof callbacks.error === "function") {
+            callbacks.error(jqXHR, textStatus, errorThrown);
+        }
+    }).complete(function(jqXHR, textStatus) {
+        if (callbacks && typeof callbacks.complete === "function") {
+            callbacks.complete(jqXHR, textStatus);
+        }
     });
-
-    return result;
 };
 
-UserDAO.prototype.findAll = function() {
-    var result = [];
-
+UserDAO.prototype.findAll = function(callbacks) {
     $.ajax({
         url: "",
         type: "GET",
-        async: false
-    }).success(function(data) {
-        result = JSON.parse(data);
+        contentType: "application/json"
+    }).success(function(data, textStatus, jqXHR) {
+        if (callbacks && typeof callbacks.success === "function") {
+            callbacks.success(JSON.parse(data), textStatus, jqXHR);
+        }
+    }).error(function(jqXHR, textStatus, errorThrown) {
+        if (callbacks && typeof callbacks.error === "function") {
+            callbacks.error(jqXHR, textStatus, errorThrown);
+        }
+    }).complete(function(jqXHR, textStatus) {
+        if (callbacks && typeof callbacks.complete === "function") {
+            callbacks.complete(jqXHR, textStatus);
+        }
     });
-
-    return result;
 };
 
-UserDAO.prototype.create = function(obj) {
-    var result = {};
-
+UserDAO.prototype.create = function(obj, callbacks) {
     $.ajax({
         url: "",
+        /*
+         * If POST method doesn't work properly, try PUT method instead as
+         * stated here: https://wiki.apache.org/couchdb/HTTP_Document_API#POST
+         */
         type: "POST",
-        async: false
-    }).success(function(data) {
-        result = JSON.parse(data);
+        contentType: "application/json",
+        data: obj
+    }).success(function(data, textStatus, jqXHR) {
+        if (callbacks && typeof callbacks.success === "function") {
+            callbacks.success(JSON.parse(data), textStatus, jqXHR);
+        }
+    }).error(function(jqXHR, textStatus, errorThrown) {
+        if (callbacks && typeof callbacks.error === "function") {
+            callbacks.error(jqXHR, textStatus, errorThrown);
+        }
+    }).complete(function(jqXHR, textStatus) {
+        if (callbacks && typeof callbacks.complete === "function") {
+            callbacks.complete(jqXHR, textStatus);
+        }
     });
-
-    return result;
 };
 
-UserDAO.prototype.update = function(obj) {
-    var result = {};
-
+UserDAO.prototype.update = function(obj, callbacks) {
     $.ajax({
         url: "",
         type: "PUT",
-        async: false
-    }).success(function(data) {
-        result = JSON.parse(data);
+        contentType: "application/json",
+        data: obj
+    }).success(function(data, textStatus, jqXHR) {
+        if (callbacks && typeof callbacks.success === "function") {
+            callbacks.success(JSON.parse(data), textStatus, jqXHR);
+        }
+    }).error(function(jqXHR, textStatus, errorThrown) {
+        if (callbacks && typeof callbacks.error === "function") {
+            callbacks.error(jqXHR, textStatus, errorThrown);
+        }
+    }).complete(function(jqXHR, textStatus) {
+        if (callbacks && typeof callbacks.complete === "function") {
+            callbacks.complete(jqXHR, textStatus);
+        }
     });
-
-    return result;
 };
 
-UserDAO.prototype.createOrUpdate = function(obj) {
-    var result = {};
-
+UserDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
-        result = this.update(obj);
+        result = this.update(obj, callbacks);
     } else {
-        result = this.save(obj);
+        result = this.create(obj, callbacks);
     }
-
-    return result;
 };
 
-UserDAO.prototype.delete = function(obj) {
+UserDAO.prototype.delete = function(obj, callbacks) {
     $.ajax({
         url: "",
         type: "DELETE",
-        async: false
-    }).success(function(data) {
+        contentType: "application/json",
+        data: obj
+    }).success(function(data, textStatus, jqXHR) {
+        if (callbacks && typeof callbacks.success === "function") {
+            callbacks.success(JSON.parse(data), textStatus, jqXHR);
+        }
+    }).error(function(jqXHR, textStatus, errorThrown) {
+        if (callbacks && typeof callbacks.error === "function") {
+            callbacks.error(jqXHR, textStatus, errorThrown);
+        }
+    }).complete(function(jqXHR, textStatus) {
+        if (callbacks && typeof callbacks.complete === "function") {
+            callbacks.complete(jqXHR, textStatus);
+        }
     });
 };
 
