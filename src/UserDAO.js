@@ -4,7 +4,7 @@ var UserDAO = function(connection) {
 
 UserDAO.prototype.findByLogin = function(login, callbacks) {
     $.ajax({
-        url: "",
+        url: this.connection.getFullUrl() + "",
         type: "GET",
         contentType: "application/json"
     }).success(function(data, textStatus, jqXHR) {
@@ -24,7 +24,7 @@ UserDAO.prototype.findByLogin = function(login, callbacks) {
 
 UserDAO.prototype.findAll = function(callbacks) {
     $.ajax({
-        url: "",
+        url: this.connection.getFullUrl() + "",
         type: "GET",
         contentType: "application/json"
     }).success(function(data, textStatus, jqXHR) {
@@ -44,7 +44,7 @@ UserDAO.prototype.findAll = function(callbacks) {
 
 UserDAO.prototype.create = function(obj, callbacks) {
     $.ajax({
-        url: "",
+        url: this.connection.getFullUrl() + "",
         /*
          * If POST method doesn't work properly, try PUT method instead as
          * stated here: https://wiki.apache.org/couchdb/HTTP_Document_API#POST
@@ -69,7 +69,7 @@ UserDAO.prototype.create = function(obj, callbacks) {
 
 UserDAO.prototype.update = function(obj, callbacks) {
     $.ajax({
-        url: "",
+        url: this.connection.getFullUrl() + "",
         type: "PUT",
         contentType: "application/json",
         data: obj
@@ -98,7 +98,7 @@ UserDAO.prototype.createOrUpdate = function(obj, callbacks) {
 
 UserDAO.prototype.delete = function(obj, callbacks) {
     $.ajax({
-        url: "",
+        url: this.connection.getFullUrl() + "",
         type: "DELETE",
         contentType: "application/json",
         data: obj
