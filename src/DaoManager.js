@@ -17,8 +17,8 @@ var DaoManager = function(connectionProperties) {
         if (connectionProperties.port) {
             this.connection.port = connectionProperties.port;
         }
-        if (connectionProperties.protocol) {
-            this.connection.protocol = connectionProperties.protocol;
+        if (connectionProperties.database) {
+            this.connection.database = connectionProperties.database;
         } else {
             console.error("No database given!");
         }
