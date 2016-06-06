@@ -24,7 +24,7 @@ UserDAO.prototype.findByLogin = function(login, callbacks) {
 
 UserDAO.prototype.findAll = function(callbacks) {
     $.ajax({
-        url: this.connection.getFullUrl() + "",
+        url: this.connection.getFullUrl() + "_design/types/_view/user",
         type: "GET",
         contentType: "application/json"
     }).success(function(data, textStatus, jqXHR) {
