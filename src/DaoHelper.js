@@ -12,7 +12,11 @@ DaoHelper.prototype.find = function(dest, callbacks) {
             return response.json();
         }).then(function(jsonResponse) {
             if (callbacks && typeof callbacks.success === "function") {
-                callbacks.success(jsonResponse);
+                var rows = new Array();
+                for(var i in jsonResponse.rows){
+                    rows.push(jsonResponse.rows[i].value);
+                }
+                callbacks.success(rows);
             }
         }).catch(function(err) {
             if (callbacks && typeof callbacks.error === "function") {
