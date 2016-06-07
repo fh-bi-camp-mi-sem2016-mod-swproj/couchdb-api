@@ -1,31 +1,31 @@
 var DaoHelper = require("./DaoHelper")
 
-var UserDAO = function(connection) {
+var MessageDAO = function(connection) {
     this.connection = connection;
     this.daoHelper = new DaoHelper();
 };
 
-UserDAO.prototype.findAll = function(callbacks) {
+MessageDAO.prototype.findAll = function(callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgALL", callbacks);
 };
 
-UserDAO.prototype.findByTo = function(from, callbacks) {
+MessageDAO.prototype.findByTo = function(from, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgFrom?key=[" + encodeURI(from) + "]", callbacks);
 };
 
-UserDAO.prototype.findByFrom = function(to, callbacks) {
+MessageDAO.prototype.findByFrom = function(to, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgTo?key=[" + encodeURI(to) + "]", callbacks);
 };
 
-UserDAO.prototype.create = function(obj, callbacks) {
+MessageDAO.prototype.create = function(obj, callbacks) {
     this.daoHelper.create(obj, this.connection.getFullUrl() + "", callbacks);
 };
 
-UserDAO.prototype.update = function(obj, callbacks) {
+MessageDAO.prototype.update = function(obj, callbacks) {
     this.daoHelper.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
 };
 
-UserDAO.prototype.createOrUpdate = function(obj, callbacks) {
+MessageDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
         this.update(obj, this.connection.getFullUrl() + "", callbacks);
     } else {
@@ -33,9 +33,9 @@ UserDAO.prototype.createOrUpdate = function(obj, callbacks) {
     }
 };
 
-UserDAO.prototype.delete = function(obj, callbacks) {
+MessageDAO.prototype.delete = function(obj, callbacks) {
     this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id, callbacks);
 };
 
-exports.default = UserDAO;
+exports.default = MessageDAO;
 module.exports = exports.default;
