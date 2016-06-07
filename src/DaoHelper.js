@@ -26,15 +26,11 @@ DaoHelper.prototype.find = function(dest, callbacks) {
             contentType: "application/json"
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
-                callbacks.success(JSON.parse(data), textStatus, jqXHR);
+                callbacks.success(JSON.parse(data));
             }
         }).error(function(jqXHR, textStatus, errorThrown) {
             if (callbacks && typeof callbacks.error === "function") {
-                callbacks.error(jqXHR, textStatus, errorThrown);
-            }
-        }).complete(function(jqXHR, textStatus) {
-            if (callbacks && typeof callbacks.complete === "function") {
-                callbacks.complete(jqXHR, textStatus);
+                callbacks.error(errorThrown);
             }
         });
     }
@@ -73,15 +69,11 @@ DaoHelper.prototype.create = function(obj, dest, callbacks) {
             data: obj
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
-                callbacks.success(JSON.parse(data), textStatus, jqXHR);
+                callbacks.success(JSON.parse(data));
             }
         }).error(function(jqXHR, textStatus, errorThrown) {
             if (callbacks && typeof callbacks.error === "function") {
-                callbacks.error(jqXHR, textStatus, errorThrown);
-            }
-        }).complete(function(jqXHR, textStatus) {
-            if (callbacks && typeof callbacks.complete === "function") {
-                callbacks.complete(jqXHR, textStatus);
+                callbacks.error(errorThrown);
             }
         });
     }
@@ -112,15 +104,11 @@ DaoHelper.prototype.update = function(obj, dest, callbacks) {
             data: obj
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
-                callbacks.success(JSON.parse(data), textStatus, jqXHR);
+                callbacks.success(JSON.parse(data));
             }
         }).error(function(jqXHR, textStatus, errorThrown) {
             if (callbacks && typeof callbacks.error === "function") {
-                callbacks.error(jqXHR, textStatus, errorThrown);
-            }
-        }).complete(function(jqXHR, textStatus) {
-            if (callbacks && typeof callbacks.complete === "function") {
-                callbacks.complete(jqXHR, textStatus);
+                callbacks.error(errorThrown);
             }
         });
     }
@@ -151,15 +139,11 @@ DaoHelper.prototype.delete = function(obj, dest, callbacks) {
             data: obj
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
-                callbacks.success(JSON.parse(data), textStatus, jqXHR);
+                callbacks.success(JSON.parse(data));
             }
         }).error(function(jqXHR, textStatus, errorThrown) {
             if (callbacks && typeof callbacks.error === "function") {
-                callbacks.error(jqXHR, textStatus, errorThrown);
-            }
-        }).complete(function(jqXHR, textStatus) {
-            if (callbacks && typeof callbacks.complete === "function") {
-                callbacks.complete(jqXHR, textStatus);
+                callbacks.error(errorThrown);
             }
         });
     }
