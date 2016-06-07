@@ -13,7 +13,7 @@ var callbacks = {
         testAppDiv.innerHTML = JSON.stringify(data);
     },
     error: function(jqXHR, textStatus, errorThrown) {
-        console.error(errorThrown);
+        testAppDiv.innerHTML = errorThrown;
     },
     complete: function(jqXHR, textStatus) {}
 };
