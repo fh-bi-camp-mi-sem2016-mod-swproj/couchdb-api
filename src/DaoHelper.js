@@ -66,7 +66,7 @@ DaoHelper.prototype.create = function(obj, dest, callbacks) {
              */
             type: "POST",
             contentType: "application/json",
-            data: obj
+            data: JSON.stringify(obj)
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
                 callbacks.success(JSON.parse(data));
@@ -101,7 +101,7 @@ DaoHelper.prototype.update = function(obj, dest, callbacks) {
             url: dest,
             type: "PUT",
             contentType: "application/json",
-            data: obj
+            data: JSON.stringify(obj)
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
                 callbacks.success(JSON.parse(data));
@@ -136,7 +136,7 @@ DaoHelper.prototype.delete = function(obj, dest, callbacks) {
             url: dest,
             type: "DELETE",
             contentType: "application/json",
-            data: obj
+            data: JSON.stringify(obj)
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
                 callbacks.success(JSON.parse(data));
