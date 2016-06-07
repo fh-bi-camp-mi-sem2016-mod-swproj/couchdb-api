@@ -9,13 +9,12 @@ var userDao = dm.getDao(CouchDbApi.UserDAO);
 var testAppDiv = document.getElementById("test-app");
 
 var callbacks = {
-    success: function(data, textStatus, jqXHR) {
+    success: function(data) {
         testAppDiv.innerHTML = JSON.stringify(data);
     },
-    error: function(jqXHR, textStatus, errorThrown) {
+    error: function(error) {
         testAppDiv.innerHTML = errorThrown;
-    },
-    complete: function(jqXHR, textStatus) {}
+    }
 };
 
 userDao.findAll(callbacks);
