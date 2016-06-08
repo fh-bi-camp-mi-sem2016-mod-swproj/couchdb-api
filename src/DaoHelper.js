@@ -1,7 +1,7 @@
 var DaoHelper = function() {};
 
 DaoHelper.prototype.find = function(dest, callbacks) {
-    if ($ && typeof $.ajax === "function") {
+    if (typeof $ === "function" && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
             type: "GET",
@@ -41,7 +41,7 @@ DaoHelper.prototype.find = function(dest, callbacks) {
 };
 
 DaoHelper.prototype.create = function(obj, dest, callbacks) {
-    if ($ && typeof $.ajax === "function") {
+    if (typeof $ === "function" && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
             /*
@@ -84,7 +84,7 @@ DaoHelper.prototype.create = function(obj, dest, callbacks) {
 };
 
 DaoHelper.prototype.update = function(obj, dest, callbacks) {
-    if ($ && typeof $.ajax === "function") {
+    if (typeof $ === "function" && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
             type: "PUT",
@@ -119,7 +119,7 @@ DaoHelper.prototype.update = function(obj, dest, callbacks) {
 };
 
 DaoHelper.prototype.delete = function(obj, dest, callbacks) {
-    if ($ && typeof $.ajax === "function") {
+    if (typeof $ === "function" && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
             type: "DELETE",
