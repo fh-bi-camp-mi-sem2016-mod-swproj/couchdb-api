@@ -27,7 +27,7 @@ DaoHelper.prototype.find = function(dest, callbacks) {
         }).then(function(jsonResponse) {
             if (callbacks && typeof callbacks.success === "function") {
                 var rows = [];
-                for(var i in jsonResponse.rows){
+                for (var i in jsonResponse.rows) {
                     rows.push(jsonResponse.rows[i].value);
                 }
                 callbacks.success(rows);
