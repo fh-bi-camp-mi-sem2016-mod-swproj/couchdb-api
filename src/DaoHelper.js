@@ -1,7 +1,21 @@
 var DaoHelper = function() {};
 
 DaoHelper.prototype.find = function(dest, callbacks) {
-    if (fetch) {
+    if ($ && typeof $.ajax === "function") {
+        $.ajax({
+            url: dest,
+            type: "GET",
+            contentType: "application/json"
+        }).success(function(data, textStatus, jqXHR) {
+            if (callbacks && typeof callbacks.success === "function") {
+                callbacks.success(JSON.parse(data));
+            }
+        }).error(function(jqXHR, textStatus, errorThrown) {
+            if (callbacks && typeof callbacks.error === "function") {
+                callbacks.error(errorThrown);
+            }
+        });
+    } else {
         fetch(dest, {
             method: "GET",
             mode: "cors",
@@ -19,11 +33,20 @@ DaoHelper.prototype.find = function(dest, callbacks) {
                 callbacks.error(err);
             }
         });
-    } else {
+    }
+};
+
+DaoHelper.prototype.create = function(obj, dest, callbacks) {
+    if ($ && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
-            type: "GET",
-            contentType: "application/json"
+            /*
+             * If POST method doesn't work properly, try PUT method instead as
+             * stated here: https://wiki.apache.org/couchdb/HTTP_Document_API#POST
+             */
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(obj)
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
                 callbacks.success(JSON.parse(data));
@@ -33,11 +56,7 @@ DaoHelper.prototype.find = function(dest, callbacks) {
                 callbacks.error(errorThrown);
             }
         });
-    }
-};
-
-DaoHelper.prototype.create = function(obj, dest, callbacks) {
-    if (fetch) {
+    } else {
         fetch(dest, {
             /*
              * If POST method doesn't work properly, try PUT method instead as
@@ -57,14 +76,14 @@ DaoHelper.prototype.create = function(obj, dest, callbacks) {
                 callbacks.error(err);
             }
         });
-    } else {
+    }
+};
+
+DaoHelper.prototype.update = function(obj, dest, callbacks) {
+    if ($ && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
-            /*
-             * If POST method doesn't work properly, try PUT method instead as
-             * stated here: https://wiki.apache.org/couchdb/HTTP_Document_API#POST
-             */
-            type: "POST",
+            type: "PUT",
             contentType: "application/json",
             data: JSON.stringify(obj)
         }).success(function(data, textStatus, jqXHR) {
@@ -76,11 +95,7 @@ DaoHelper.prototype.create = function(obj, dest, callbacks) {
                 callbacks.error(errorThrown);
             }
         });
-    }
-};
-
-DaoHelper.prototype.update = function(obj, dest, callbacks) {
-    if (fetch) {
+    } else {
         fetch(dest, {
             method: "PUT",
             mode: "cors",
@@ -96,10 +111,14 @@ DaoHelper.prototype.update = function(obj, dest, callbacks) {
                 callbacks.error(err);
             }
         });
-    } else {
+    }
+};
+
+DaoHelper.prototype.delete = function(obj, dest, callbacks) {
+    if ($ && typeof $.ajax === "function") {
         $.ajax({
             url: dest,
-            type: "PUT",
+            type: "DELETE",
             contentType: "application/json",
             data: JSON.stringify(obj)
         }).success(function(data, textStatus, jqXHR) {
@@ -111,11 +130,7 @@ DaoHelper.prototype.update = function(obj, dest, callbacks) {
                 callbacks.error(errorThrown);
             }
         });
-    }
-};
-
-DaoHelper.prototype.delete = function(obj, dest, callbacks) {
-    if (fetch) {
+    } else {
         fetch(dest, {
             method: "DELETE",
             mode: "cors",
@@ -129,21 +144,6 @@ DaoHelper.prototype.delete = function(obj, dest, callbacks) {
         }).catch(function(err) {
             if (callbacks && typeof callbacks.error === "function") {
                 callbacks.error(err);
-            }
-        });
-    } else {
-        $.ajax({
-            url: dest,
-            type: "DELETE",
-            contentType: "application/json",
-            data: JSON.stringify(obj)
-        }).success(function(data, textStatus, jqXHR) {
-            if (callbacks && typeof callbacks.success === "function") {
-                callbacks.success(JSON.parse(data));
-            }
-        }).error(function(jqXHR, textStatus, errorThrown) {
-            if (callbacks && typeof callbacks.error === "function") {
-                callbacks.error(errorThrown);
             }
         });
     }
