@@ -9,12 +9,12 @@ MessageDAO.prototype.findAll = function(callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgALL", callbacks);
 };
 
-MessageDAO.prototype.findByTo = function(from, callbacks) {
-    this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgFrom?key=[" + encodeURI(from) + "]", callbacks);
+MessageDAO.prototype.findByTo = function(to, callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgTo?key=[%22" + encodeURI(to) + "%22]", callbacks);
 };
 
-MessageDAO.prototype.findByFrom = function(to, callbacks) {
-    this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgTo?key=[" + encodeURI(to) + "]", callbacks);
+MessageDAO.prototype.findByFrom = function(from, callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgFrom?key=[%22" + encodeURI(from) + "%22]", callbacks);
 };
 
 MessageDAO.prototype.create = function(obj, callbacks) {
