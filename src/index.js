@@ -7,7 +7,7 @@ var CouchDbApi = function() {};
 
 CouchDbApi.UserDAO = UserDAO;
 CouchDbApi.MessageDAO = MessageDAO;
-CouchDbApi.PictureDAO = DaoManager;
+CouchDbApi.PictureDAO = PictureDAO;
 CouchDbApi.DaoManager = DaoManager;
 
 
