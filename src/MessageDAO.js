@@ -27,9 +27,9 @@ MessageDAO.prototype.update = function(obj, callbacks) {
 
 MessageDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
-        this.update(obj, this.connection.getFullUrl() + "", callbacks);
+        this.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
     } else {
-        this.create(obj, this.connection.getFullUrl() + obj._id, callbacks);
+        this.create(obj, this.connection.getFullUrl() + "", callbacks);
     }
 };
 
