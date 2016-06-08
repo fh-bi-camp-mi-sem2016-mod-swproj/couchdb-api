@@ -18,7 +18,7 @@ MessageDAO.prototype.findByFrom = function(from, callbacks) {
 };
 
 MessageDAO.prototype.create = function(obj, callbacks) {
-    this.daoHelper.create(obj, this.connection.getFullUrl() + "", callbacks);
+    this.daoHelper.create(obj, this.connection.getFullUrl(), callbacks);
 };
 
 MessageDAO.prototype.update = function(obj, callbacks) {
@@ -29,7 +29,7 @@ MessageDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
         this.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
     } else {
-        this.create(obj, this.connection.getFullUrl() + "", callbacks);
+        this.create(obj, this.connection.getFullUrl(), callbacks);
     }
 };
 

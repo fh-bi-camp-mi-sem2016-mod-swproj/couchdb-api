@@ -14,7 +14,7 @@ PictureDAO.prototype.findAll = function(callbacks) {
 };
 
 PictureDAO.prototype.create = function(obj, callbacks) {
-    this.daoHelper.create(obj, this.connection.getFullUrl() + "", callbacks);
+    this.daoHelper.create(obj, this.connection.getFullUrl(), callbacks);
 };
 
 PictureDAO.prototype.update = function(obj, callbacks) {
@@ -25,7 +25,7 @@ PictureDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
         this.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
     } else {
-        this.create(obj, this.connection.getFullUrl() + "", callbacks);
+        this.create(obj, this.connection.getFullUrl(), callbacks);
     }
 };
 
