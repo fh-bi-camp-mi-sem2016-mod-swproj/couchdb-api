@@ -34,7 +34,7 @@ MessageDAO.prototype.createOrUpdate = function(obj, callbacks) {
 };
 
 MessageDAO.prototype.delete = function(obj, callbacks) {
-    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id, callbacks);
+    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id + "?rev=" + obj._rev, callbacks);
 };
 
 exports.default = MessageDAO;
