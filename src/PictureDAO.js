@@ -23,14 +23,14 @@ PictureDAO.prototype.update = function(obj, callbacks) {
 
 PictureDAO.prototype.createOrUpdate = function(obj, callbacks) {
     if (obj._id) {
-        this.update(obj, this.connection.getFullUrl() + obj_id, callbacks);
+        this.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
     } else {
         this.create(obj, this.connection.getFullUrl() + "", callbacks);
     }
 };
 
 PictureDAO.prototype.delete = function(obj, callbacks) {
-    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj_id, callbacks);
+    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id, callbacks);
 };
 
 exports.default = PictureDAO;
