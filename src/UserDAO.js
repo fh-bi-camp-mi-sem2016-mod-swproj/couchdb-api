@@ -30,7 +30,7 @@ UserDAO.prototype.createOrUpdate = function(obj, callbacks) {
 };
 
 UserDAO.prototype.delete = function(obj, callbacks) {
-    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id + "?rev=" + obj._rev, callbacks);
+    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id + "?rev=" + encodeURI(obj._rev), callbacks);
 };
 
 exports.default = UserDAO;

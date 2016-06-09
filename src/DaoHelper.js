@@ -73,6 +73,9 @@ DaoHelper.prototype.create = function(obj, dest, callbacks) {
              */
             method: "POST",
             mode: "cors",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(obj)
         }).then(function(response) {
             return response.json();
@@ -108,6 +111,9 @@ DaoHelper.prototype.update = function(obj, dest, callbacks) {
         fetch(dest, {
             method: "PUT",
             mode: "cors",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(obj)
         }).then(function(response) {
             return response.json();
@@ -143,7 +149,9 @@ DaoHelper.prototype.delete = function(obj, dest, callbacks) {
         fetch(dest, {
             method: "DELETE",
             mode: "cors",
-            body: JSON.stringify(obj)
+            headers: new Headers({
+                "Content-Type": "application/json"
+            })
         }).then(function(response) {
             return response.json();
         }).then(function(jsonResponse) {
