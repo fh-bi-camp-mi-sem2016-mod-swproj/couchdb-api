@@ -143,7 +143,6 @@ DaoHelper.prototype.delete = function(obj, dest, callbacks) {
         fetch(dest, {
             method: "DELETE",
             mode: "cors",
-            body: JSON.stringify(obj)
         }).then(function(response) {
             return response.json();
         }).then(function(jsonResponse) {
