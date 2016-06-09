@@ -2,6 +2,7 @@ var DaoHelper = function() {};
 
 DaoHelper.prototype.find = function(dest, callbacks) {
     if (typeof $ === "function" && typeof $.ajax === "function") {
+        console.log(dest);
         $.ajax({
             url: dest,
             type: "GET",
