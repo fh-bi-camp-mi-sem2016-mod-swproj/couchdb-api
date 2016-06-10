@@ -5,11 +5,13 @@ var PictureDAO = require("./PictureDAO");
 
 var CouchDbApi = function() {};
 
+CouchDbApi.DaoManager = DaoManager;
+
 CouchDbApi.UserDAO = UserDAO;
 CouchDbApi.MessageDAO = MessageDAO;
 CouchDbApi.PictureDAO = PictureDAO;
-CouchDbApi.DaoManager = DaoManager;
-
+CouchDbApi.ProfileDAO = ProfileDAO;
 
 exports.default = CouchDbApi;
 module.exports = exports.default;
+
