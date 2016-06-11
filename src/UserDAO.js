@@ -35,3 +35,4 @@ UserDAO.prototype.delete = function(obj, callbacks) {
 
 exports.default = UserDAO;
 module.exports = exports.default;
+

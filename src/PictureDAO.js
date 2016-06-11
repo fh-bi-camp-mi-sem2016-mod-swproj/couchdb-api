@@ -35,3 +35,4 @@ PictureDAO.prototype.delete = function(obj, callbacks) {
 
 exports.default = PictureDAO;
 module.exports = exports.default;
+

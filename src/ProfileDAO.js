@@ -47,3 +47,4 @@ ProfileDAO.prototype.delete = function(obj, callbacks) {
 
 exports.default = ProfileDAO;
 module.exports = exports.default;
+
