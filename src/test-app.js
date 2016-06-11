@@ -16,6 +16,7 @@ var callbacks = {
         testAppDiv.innerHTML = error;
     }
 };
+
 testAppDiv.innerHTML += "<p>findAll: </p><br>";
 preferenceDAO.findAll(callbacks);
 
