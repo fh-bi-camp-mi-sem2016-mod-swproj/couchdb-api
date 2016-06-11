@@ -1,6 +1,6 @@
 var DaoHelper = require("./DaoHelper")
 
-var FriendDAO= function(connection) {
+var FriendDAO = function(connection) {
     this.connection = connection;
     this.daoHelper = new DaoHelper();
 };
