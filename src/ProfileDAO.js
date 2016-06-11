@@ -23,8 +23,6 @@ ProfileDAO.prototype.findByEmail = function(email, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileByEmail?key=[%22" + encodeURI(email) + "%22]", callbacks);
 };
 
-
-
 ProfileDAO.prototype.create = function(obj, callbacks) {
     this.daoHelper.create(obj, this.connection.getFullUrl() + "", callbacks);
 };
