@@ -5,6 +5,10 @@ var PictureDAO = function(connection) {
     this.daoHelper = new DaoHelper();
 };
 
+PictureDAO.prototype.findById = function(id, callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/picALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+};
+
 PictureDAO.prototype.findByProfile = function(profile, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/picture/_view/picForProfile?key=[%22" + encodeURI(profile) + "%22]", callbacks);
 };

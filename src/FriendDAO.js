@@ -5,6 +5,10 @@ var FriendDAO = function(connection) {
     this.daoHelper = new DaoHelper();
 };
 
+FriendDAO.prototype.findById = function(id, callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/friendsALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+};
+
 FriendDAO.prototype.findAll = function(callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/friends/_view/friendsALL", callbacks);
 };

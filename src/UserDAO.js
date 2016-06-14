@@ -5,6 +5,10 @@ var UserDAO = function(connection) {
     this.daoHelper = new DaoHelper();
 };
 
+UserDAO.prototype.findById = function(id, callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/userALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+};
+
 UserDAO.prototype.findByLogin = function(login, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/user/_view/userLogin?key=[%22" + encodeURI(login) + "%22]", callbacks);
 };
