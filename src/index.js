@@ -5,7 +5,6 @@ var PictureDAO = require("./PictureDAO");
 var ProfileDAO = require("./ProfileDAO");
 var FriendDAO = require("./FriendDAO");
 var PreferenceDAO = require("./PreferenceDAO");
-var ProfileDAO = require("./ProfileDAO");
 
 var CouchDbApi = function() {};
 
