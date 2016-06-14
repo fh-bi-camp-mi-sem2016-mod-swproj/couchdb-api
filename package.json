@@ -1,6 +1,6 @@
 {
   "name": "findme-react-couchdb-api",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "CouchDB based API for find.me.",
   "main": "src/index.js",
   "scripts": {
