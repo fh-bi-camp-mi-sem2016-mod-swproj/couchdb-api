@@ -10,7 +10,7 @@ UserDAO.prototype.findAll = function(callbacks) {
 };
 
 UserDAO.prototype.findById = function(id, callbacks) {
-    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/userALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/user/_view/userALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
 };
 
 UserDAO.prototype.findByLogin = function(login, callbacks) {

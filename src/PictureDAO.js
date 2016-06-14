@@ -10,7 +10,7 @@ PictureDAO.prototype.findAll = function(callbacks) {
 };
 
 PictureDAO.prototype.findById = function(id, callbacks) {
-    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/picALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/picture/_view/picALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
 };
 
 PictureDAO.prototype.findByProfile = function(profile, callbacks) {

@@ -10,7 +10,7 @@ PreferenceDAO.prototype.findAll = function(callbacks) {
 };
 
 PreferenceDAO.prototype.findById = function(id, callbacks) {
-    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/preferenceALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/preference/_view/preferenceALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
 };
 
 PreferenceDAO.prototype.findByProfileId = function(id, callbacks) {
