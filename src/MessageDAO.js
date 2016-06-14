@@ -9,6 +9,10 @@ MessageDAO.prototype.findAll = function(callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgALL", callbacks);
 };
 
+MessageDAO.prototype.findById = function(id, callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/msgALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
+};
+
 MessageDAO.prototype.findByTo = function(to, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgTo?key=[%22" + encodeURI(to) + "%22]", callbacks);
 };

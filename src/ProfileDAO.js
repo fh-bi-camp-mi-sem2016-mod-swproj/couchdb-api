@@ -5,6 +5,10 @@ var ProfileDAO = function(connection) {
     this.daoHelper = new DaoHelper();
 };
 
+ProfileDAO.prototype.findAll = function(callbacks) {
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileALL", callbacks);
+};
+
 ProfileDAO.prototype.findById = function(id, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
 };
@@ -13,12 +17,10 @@ ProfileDAO.prototype.findByUserId = function(id, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileByUser?key=[%22" + encodeURI(id) + "%22]", callbacks);
 };
 
-ProfileDAO.prototype.findAll = function(callbacks) {
-    this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileALL", callbacks);
-};
 ProfileDAO.prototype.findByPreference = function(preference, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileByPreference?key=[" + preference.gender + "," + preference.birthday + "," + preference.haircolor + "," + preference.eyecolor + "," + preference.figure + "]", callbacks);
 };
+
 ProfileDAO.prototype.findByEmail = function(email, callbacks) {
     this.daoHelper.find(this.connection.getFullUrl() + "_design/profile/_view/profileByEmail?key=[%22" + encodeURI(email) + "%22]", callbacks);
 };
