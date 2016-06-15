@@ -1,3 +1,5 @@
+var q = require("q");
+
 var DaoHelper = require("./DaoHelper")
 
 var MessageDAO = function(connection) {
@@ -37,8 +39,25 @@ MessageDAO.prototype.createOrUpdate = function(obj, callbacks) {
     }
 };
 
-MessageDAO.prototype.delete = function(obj, callbacks) {
-    return this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id + "?rev=" + encodeURI(obj._rev), callbacks);
+MessageDAO.prototype.delete = function(obj, userId, callbacks) {
+    var validOperation = false;
+
+    if (obj.from === userId) {
+        obj.deletedFrom = true;
+        validOperation = true;
+    } else if (obj.to === userId) {
+        obj.deletedTo = true;
+        validOperation = true;
+    }
+
+    if (validOperation) {
+        return this.daoHelper.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
+    }
+
+    var defer = q.defer();
+    defer.reject("user is not sender or recipient of message");
+
+    return defer.promise;
 };
 
 exports.default = MessageDAO;
