@@ -33,8 +33,20 @@ MessageDAO.prototype.createOrUpdate = function(obj, callbacks) {
     }
 };
 
-MessageDAO.prototype.delete = function(obj, callbacks) {
-    this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id + "?rev=" + encodeURI(obj._rev), callbacks);
+MessageDAO.prototype.delete = function(obj, userId, callbacks) {
+    var valideOperation = false;
+    if(obj.from === userId){
+        obj.deletedFrom = true;
+        valideOperation = true;
+    } else if(obj.to === userId){
+        obj.deletedTo = true;
+        valideOperation = true;
+    } else {
+        valideOperation = false;
+    }
+    if(valideOperation){
+        this.daoHelper.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
+    }
 };
 
 exports.default = MessageDAO;
