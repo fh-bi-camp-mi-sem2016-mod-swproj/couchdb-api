@@ -32,6 +32,15 @@ MessageDAO.prototype.findUndeleteTo = function(userid, callbacks) {
 
     return this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgAllUndeletedTo?key=[%22" + encodeURI(userid) + "%22]", callbacks);
 };
+MessageDAO.prototype.findArchivedFrom = function(userid, callbacks) {
+
+    return this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgAllArchivedFrom?key=[%22" + encodeURI(userid) + "%22]", callbacks);
+};
+MessageDAO.prototype.findArchivedTo = function(userid, callbacks) {
+
+    return this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgAllArchivedTo?key=[%22" + encodeURI(userid) + "%22]", callbacks);
+};
+
 
 MessageDAO.prototype.findByTo = function(to, callbacks) {
     return this.daoHelper.find(this.connection.getFullUrl() + "_design/msg/_view/msgTo?key=[%22" + encodeURI(to) + "%22]", callbacks);
