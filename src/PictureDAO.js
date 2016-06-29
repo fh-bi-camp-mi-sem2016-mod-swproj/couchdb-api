@@ -15,6 +15,38 @@ PictureDAO.prototype.findById = function(id, callbacks) {
     return this.daoHelper.find(this.connection.getFullUrl() + "_design/picture/_view/picALL?key=[%22" + encodeURI(id) + "%22]", callbacks);
 };
 
+PictureDAO.prototype.findAttachmentURLsById = function(id, callbacks) {
+    var self = this;
+
+    var defer = q.defer();
+
+    this.daoHelper.find(this.connection.getFullUrl() + "_design/picture/_view/picALL?key=[%22" + encodeURI(id) + "%22]", callbacks)
+        .then(function(data) {
+            var urls = [];
+
+            for (var i = 0; i < data.length; i++) {
+                for (var attachment in data[i]._attachments) {
+                    urls.push(self.connection.getFullUrl() + data[i]._id + "/" + attachment);
+                }
+            }
+
+            if (callbacks && typeof callbacks.success === "function") {
+                callbacks.success(urls);
+            }
+
+            defer.resolve(urls);
+        })
+        .catch(function(err) {
+            if (callbacks && typeof callbacks.error) {
+                callbacks.error(err);
+            }
+
+            defer.reject(err);
+        });
+
+    return defer.promise;
+};
+
 PictureDAO.prototype.findByProfile = function(profile, callbacks) {
     return this.daoHelper.find(this.connection.getFullUrl() + "_design/picture/_view/picForProfile?key=[%22" + encodeURI(profile) + "%22]", callbacks);
 };
