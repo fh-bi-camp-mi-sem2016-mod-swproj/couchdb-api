@@ -37,7 +37,7 @@ PictureDAO.prototype.findAttachmentURLsById = function(id, callbacks) {
             defer.resolve(urls);
         })
         .catch(function(err) {
-            if (callbacks && typeof callbacks.error) {
+            if (callbacks && typeof callbacks.error === "function") {
                 callbacks.error(err);
             }
 
@@ -73,7 +73,7 @@ PictureDAO.prototype.findAttachmentURLsByProfile = function(profile, callbacks) 
             defer.resolve(urls);
         })
         .catch(function(err) {
-            if (callbacks && typeof callbacks.error) {
+            if (callbacks && typeof callbacks.error === "function") {
                 callbacks.error(err);
             }
 
