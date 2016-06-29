@@ -49,7 +49,7 @@ PictureDAO.prototype.findAttachmentURLsByProfile = function(profile, callbacks) 
         });
 
     return defer.promise;
-}
+};
 
 PictureDAO.prototype.create = function(obj, callbacks) {
     return this.daoHelper.create(obj, this.connection.getFullUrl(), callbacks);
