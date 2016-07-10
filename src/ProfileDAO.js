@@ -42,7 +42,7 @@ ProfileDAO.prototype.createOrUpdate = function(obj, callbacks) {
 };
 
 ProfileDAO.prototype.delete = function(obj, callbacks) {
-    return this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id, callbacks);
+    return this.daoHelper.delete(obj, this.connection.getFullUrl() + obj._id + "?rev=" + encodeURI(obj._rev), callbacks);
 };
 
 exports.default = ProfileDAO;

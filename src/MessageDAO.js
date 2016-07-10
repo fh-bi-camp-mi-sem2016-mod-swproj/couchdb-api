@@ -71,7 +71,7 @@ MessageDAO.prototype.delete = function(obj, userId, callbacks) {
     }
 
     if (validOperation) {
-        return this.daoHelper.update(obj, this.connection.getFullUrl() + obj._id, callbacks);
+        return this.daoHelper.update(obj, this.connection.getFullUrl() + obj._id + "?rev=" + encodeURI(obj._rev), callbacks);
     }
 
     var defer = q.defer();
