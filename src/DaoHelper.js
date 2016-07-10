@@ -164,8 +164,7 @@ DaoHelper.prototype.delete = function(obj, dest, callbacks) {
         $.ajax({
             url: dest,
             type: "DELETE",
-            contentType: "application/json",
-            data: JSON.stringify(obj)
+            contentType: "application/json"
         }).success(function(data, textStatus, jqXHR) {
             if (callbacks && typeof callbacks.success === "function") {
                 callbacks.success(JSON.parse(data));
